@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500;700&display=swap" rel="stylesheet"/>
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+    <meta name="description" content="No_te_pases_ma, Control de compras ajustado a presupuesto, desarrollado por ADCP 2022">
+    <link rel="apple-touch-icon" href="https://alejoprin.github.io/No_te_pases_ma/assets/apple-touch-icon.png">
+    <link rel="apple-touch-startup-image" href="./assets/android-chrome-192x192.png">
+    <link rel="apple-touch-icon" href="./assets/android-chrome-192x192.png">
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#7EC2DB">
+    <meta name="twitter:card" content="summary">
+    <meta property="og:title" name="twitter:title" content="No_te_pases_ma - ADCP">
+    <meta property="og:description" name="twitter:description" content="No_te_pases_ma, Control de compras ajustado a presupuesto, desarrollado por ADCP 2022">
+    <meta property="og:image" name="twitter:image" content="https://alejoprin.github.io/No_te_pases_ma/assets/android-chrome-192x192.png">
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>No te pases ma!</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="budget-wrapper">
+        <p class="budget-msj">Presupuesto: <span class="budget"></span>$</p>
+      </div>
+
+      <div class="indicators">
+        <div class="indicator dolar">
+          <button class="bcv-btn">+</button>
+          <h2></h2>
+          <p>Dolar BCV</p>
+        </div>
+
+        <div class="indicator subTotal">
+          <h2></h2>
+          <p>Sub-total $</p>
+        </div>
+
+        <div class="indicator totalVes">
+          <h2></h2>
+          <p>Total VES</p>
+        </div>
+
+        <div class="indicator totalDolar">
+          <h2></h2>
+          <p>Total $</p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <button class="btn add-article">
+        <svg
+          fill="#E2E3E9"
+          height="20px"
+          id="Layer_1"
+          version="1.1"
+          viewBox="0 0 32 32"
+          width="20px"
+        >
+          <path
+            d="M28,14H18V4c0-1.104-0.896-2-2-2s-2,0.896-2,2v10H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h10v10c0,1.104,0.896,2,2,2  s2-0.896,2-2V18h10c1.104,0,2-0.896,2-2S29.104,14,28,14z"
+          />
+        </svg>
+      </button>
+
+      <button class="btn delete-article">
+        <svg fill="#E2E3E9" height="25px" id="Layer_1" version="1.1" viewBox="0 0 512 512" width="25px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M417.4,224H94.6C77.7,224,64,238.3,64,256c0,17.7,13.7,32,30.6,32h322.8c16.9,0,30.6-14.3,30.6-32  C448,238.3,434.3,224,417.4,224z"/></svg>
+      </button>
+
+      <input class="search" type="search" placeholder="Buscar..." />
+
+      <div class="articles-wrapper"></div>
+    </main>
+
+    <aside class="product-list">
+      <h2>Articulos por comprar</h2>
+      
+      <h3 class="products-quantity"></h3>
+      
+      <div class="product-list-btns">
+        <button class="add-btn-list">
+          <svg fill="black" height="20px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="20px"><path d="M28,14H18V4c0-1.104-0.896-2-2-2s-2,0.896-2,2v10H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h10v10c0,1.104,0.896,2,2,2  s2-0.896,2-2V18h10c1.104,0,2-0.896,2-2S29.104,14,28,14z"/>
+          </svg>
+        </button>
+        <button class="save-btn-list">
+          <svg class="feather feather-save" fill="none" height="24" stroke="green" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        </button>
+        <button class="delete-btn-list">
+          <svg id="Icons" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:crimson;}</style></defs><path class="cls-1" d="M13,0H11A3,3,0,0,0,8,3V4H2A1,1,0,0,0,2,6H3V20a4,4,0,0,0,4,4H17a4,4,0,0,0,4-4V6h1a1,1,0,0,0,0-2H16V3A3,3,0,0,0,13,0ZM10,3a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V4H10Zm9,17a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V6H19Z"/><path class="cls-1" d="M12,9a1,1,0,0,0-1,1v8a1,1,0,0,0,2,0V10A1,1,0,0,0,12,9Z"/><path class="cls-1" d="M15,18a1,1,0,0,0,2,0V10a1,1,0,0,0-2,0Z"/><path class="cls-1" d="M8,9a1,1,0,0,0-1,1v8a1,1,0,0,0,2,0V10A1,1,0,0,0,8,9Z"/></svg>
+        </button>
+      </div>
+
+      <input class="search-list" type="text" placeholder="buscar...">
+
+      <article class="product-list-container"></article>
+
+      <button class="product-list-open-btn">
+        <svg height="22" viewBox="0 0 48 48" width="22" xmlns="http://www.w3.org/2000/svg"><path d="M30.83 32.67l-9.17-9.17 9.17-9.17-2.83-2.83-12 12 12 12z"/><path d="M0-.5h48v48h-48z" fill="none"/></svg>
+      </button>
+    </aside>
+
+    <footer class="footer">
+      <p class="footer-info">No_te_pases_ma by <a href="https://bit.ly/AlejandroCalderon" target="_blank" rel="noopener">ADCP</a> 2022</p>
+    </footer>
+
+    <div class="background-modal hidden"></div>
+
+    <!-- MODAL DOLAR RATE WARN -->
+    <section class="dolar-bcv-rate-warn hidden">
+      <h2>Define la tasa del dólar BCV y el presupuesto antes de empezar a colocar los articulos</h2>
+    </section>
+
+    <!-- MODAL DOLAR BCV -->
+    <section class="dolar-bcv-section hidden">
+      <h2>Colocar Dolar Bcv</h2>
+      <input class="dolar-bcv-input" type="number">
+      
+      <h2>Presupuesto:</h2>
+      <input class="budget-input" type="number">
+      <button>Aceptar</button>
+
+      <div class="warn-incomplete-dolar hidden">
+        <p></p>
+      </div>
+    </section>
+
+    <!-- MODAL TYPE OF PRODUCT -->
+    <section class="typeOfProduct-section hidden">
+      <div class="typeOfProduct-btns">
+        <button class="unitary-btn focus">Unitario</button>
+        <button class="byWeight-btn">Por peso</button>
+      </div>
+
+      <div class="unitary-info">
+        <div class="unitary-name">
+          <p>Nombre:</p>
+          <input class="unitary-name-input" type="text">
+        </div>
+        <div class="unitary-quantity">
+          <p>Cantidad:</p>
+          <input class="unitary-quantity-input" type="number" value="1">
+        </div>
+        <div class="unitary-price">
+          <p>Precio:</p>
+          <input class="unitary-price-input" type="number">
+        </div>
+        <button class="generate-article-btn-unitary generate-article-btn">Crear Articulo</button>
+      </div>
+      
+      <div class="byWeight-info hidden">
+        <div class="byWeight-name">
+          <p>Nombre:</p>
+          <input class="byWeight-name-input" type="text">
+        </div>
+        <div class="byWeight-weight">
+          <p>Peso:</p>
+          <input class="byWeight-weight-input" type="number">
+        </div>
+        <div class="byWeight-price">
+          <p>Precio:</p>
+          <input class="byWeight-price-input" type="number">
+        </div>
+        <button class="generate-article-btn-byWeight generate-article-btn" type="button">Crear Articulo</button>
+      </div>
+
+      <div class="warn-incomplete-article hidden">
+        <p>Coloca todos los datos del articulo</p>
+      </div>
+    </section>
+
+    <!-- MODAL BUDGET ALARM -->
+    <section class="budget-alarm hidden">
+      <p class="budget-alarm-info"></p>
+    </section>
+
+    <!-- MODAL CONFIRM ARTICLE DELETE -->
+    <section class="article-delete-confirm hidden">
+      <h2>Confirma la eliminación de los artículos?</h2>
+      <div class="article-delete-confirm-btns">
+        <button class="delete-confirm">Aceptar</button>
+        <button class="delete-reject">Cancelar</button>
+      </div>
+    </section>
+
+    <!-- MODAL ADD PRODUCT LIST -->
+    <section class="add-product-section hidden">
+      <h2>Articulo a guardar</h2>
+
+      <div class="add-product-name-wrapper">
+        <label for="add-product-name-input">Producto:</label>
+        <input id="add-product-name-input" class="add-product-name-input" type="text">
+      </div>
+
+      <div class="add-product-type-wrapper">
+        <label for="add-product-type-select">Tipo:</label>
+        <select id="add-product-type-select" class="add-product-type-select">
+          <option value="u">Unitario</option>
+          <option value="p">Peso</option>
+        </select>
+      </div>
+
+      <div class="add-product-btns">
+        <button class="add-product-btn">Agregar</button>
+        <button class="cancel-product-btn">Cancelar</button>
+      </div>
+    </section>
+
+    <!-- MODAL PRODUCT LIST SAVE -->
+    <section class="product-list-save-msj hidden">
+      <h2>Productos guardados</h2>
+    </section>
+
+    <!-- TEMPLATE ARTICLE BY-WEIGHT -->
+    <template class="template-byWeight-article">
+      <article class="article">
+          <input type="checkbox"/>
+          <p class="article-description"></p>
+
+          <div class="article-weight-wrapper">
+            <p class="article-weight"></p>
+            <p class="article-kg">Kg</p>
+          </div>
+          
+          <div class="article-price-wrapper">
+            <p class="article-price"></p>
+            <p class="article-currency">$</p>
+          </div>
+        </article>
+    </template>
+
+    <!-- TEMPLATE ARTICLE UNITARY -->
+    <template class="template-unitary-article">
+      <article class="article">
+          <input type="checkbox"/>
+          <p class="article-description"></p>
+
+          <div class="article-quantity-wrapper">
+            <p>x</p>
+            <p class="article-quantity"></p>
+          </div>
+
+          <div class="article-price-wrapper">
+            <p class="article-price"></p>
+            <p class="article-currency">$</p>
+          </div>
+        </article>
+    </template>
+
+    <script src="./articles_exempt_IVA.js"></script>
+    <script src="./index.js" type="module"></script>
+  </body>
+  
+</html>
