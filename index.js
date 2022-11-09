@@ -12,7 +12,15 @@ import dragNDropProductMobile from "./js/dragNDrop_product_mobile.js";
 
 const d = document
 const $productListContainer = d.querySelector(".product-list-container");
+const $main = d.querySelector('main')
 let ls
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("./sw.js")
+    .then((reg) => console.log("Registro de SW exitoso", reg))
+    .catch((err) => console.warn("Error al tratar de registrar el sw", err));
+}
 
 d.addEventListener('DOMContentLoaded', e => {
   addDolarBcvAndBudget(".bcv-btn");
@@ -28,12 +36,12 @@ d.addEventListener('DOMContentLoaded', e => {
   dragNDropProductMobile();
 })
 
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker
-    .register("./sw.js")
-    .then((reg) => console.log("Registro de SW exitoso", reg))
-    .catch((err) => console.warn("Error al tratar de registrar el sw", err));
-}
+let WebHeight = window.innerHeight;
+let HeaderAndFooterHeight = 367;
+let resultHeight = WebHeight - HeaderAndFooterHeight;
+let mainAtrHeight = `height:${resultHeight}px;`;
+$main.setAttribute("style", mainAtrHeight);
+
 
 /* PRODUCT LIST */
 if (localStorage.getItem('product-list')) {

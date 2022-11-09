@@ -34,6 +34,7 @@ export default function productList() {
   $addBtnList.addEventListener('click', e => {
     $addProductSection.classList.remove('hidden')
     $productList.classList.remove('to-right')
+    $productList.removeAttribute("style");
   })
 
   $addProductBtn.addEventListener('click', e => {
@@ -75,6 +76,7 @@ export default function productList() {
       }
     }
 
+    $productList.style.zIndex = "15";
     dragNDropProduct();
     dragNDropProductMobile()
   })
@@ -82,6 +84,7 @@ export default function productList() {
   $cancelProductBtn.addEventListener('click', e => {
     $addProductSection.classList.add("hidden");
     $productList.classList.add("to-right");
+    $productList.style.zIndex = "15";
 
     $addProductNameInput.value = "";
   })
